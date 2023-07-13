@@ -11,28 +11,40 @@
  * @link     https://wajahatkanju.github.io
  */
 
+if (!defined('PHOENIXA_STAR_DIR_PATH')) {
+    define('PHOENIXA_STAR_DIR_PATH', untrailingslashit(get_template_directory()));
+}
+
+require_once PHOENIXA_STAR_DIR_PATH . '/inc/helpers/autoloader.php';
+
+
+\PHOENIXA_STAR_THEME\Inc\PHOENIXA_STAR_THEME::get_instance();
+
+//function phoenixa_star_get_theme_instance(): void {
+//	\PHOENIXA_STAR_THEME\Inc\PHOENIXA_STAR_THEME::get_instance();
+//
+//}
+
+//phoenixa_star_get_theme_instance();
+
 /**
- * Enqueue styles for the Phoneixa Star theme.
+ * Enqueue styles for the Phoenixa Star theme.
  *
  * @return void
  */
-function Phoneixa_Star_Enqueue_scripts()
-{   
+function Phoenixa_Star_Enqueue_scripts(): void
+{
     //  Register Styles
     wp_register_style(
         'style-css',
         get_stylesheet_uri(),
         [],
-        filemtime(get_template_directory() . '/style.css'),
-        'all'
+        filemtime(get_template_directory() . '/style.css')
     );
 
     wp_register_style(
         'bootstrap-css',
-        get_template_directory_uri() . '/assets/src/library/css/bootstrap.min.css',
-        [],
-        false,
-        'all'
+        get_template_directory_uri() . '/assets/src/library/css/bootstrap.min.css'
     );
 
     // Register Scripts 
@@ -55,10 +67,10 @@ function Phoneixa_Star_Enqueue_scripts()
     // Enqueue style
     wp_enqueue_style('style-css');
     wp_enqueue_style('bootstrap-css');
-    
+
     // Enqueue scripts
     wp_enqueue_script('main-js');
     wp_enqueue_script('bootstrap-js');
 }
 
-add_action('wp_enqueue_scripts', 'phoneixa_star_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'Phoenixa_Star_Enqueue_scripts');
