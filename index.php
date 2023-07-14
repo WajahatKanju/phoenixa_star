@@ -17,7 +17,6 @@ if (function_exists('get_header')) {
 
 
 <div class="content">
-    
     Content
 </div>
 

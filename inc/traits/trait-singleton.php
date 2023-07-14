@@ -22,7 +22,7 @@ trait Singleton {
 
     }
 
-    final public static function get_instance(): string
+    final public static function get_instance()
     {
         static $instance = [];
         $called_class =get_called_class();

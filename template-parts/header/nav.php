@@ -13,7 +13,19 @@
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+
+
+	<?php
+    if(function_exists('the_custom_logo')){
+
+        the_custom_logo();
+
+    }
+    ?>
+
+    <a class="navbar-brand" href="#">
+
+    </a>
     <button 
         class="navbar-toggler" 
         type="button" 
