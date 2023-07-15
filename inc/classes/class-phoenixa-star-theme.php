@@ -21,6 +21,7 @@ class PHOENIXA_STAR_THEME {
 
 		// load class
 		ASSETS::get_instance();
+		Menus::get_instance();
 		$this->set_hooks();
 	}
 
@@ -34,15 +35,50 @@ class PHOENIXA_STAR_THEME {
 	}
 
 	public function setup_theme(): void {
+
 		add_theme_support( 'title-tag' );
-		add_theme_support( 'custom-logo', array(
+		add_theme_support( 'custom-logo', [
 			'height'               => 100,
 			'width'                => 400,
 			'flex-height'          => true,
 			'flex-width'           => true,
-			'header-text'          => array( 'site-title', 'site-description' )
+			'header-text'          => [ 'site-title', 'site-description' ]
 
-		) );
+		] );
+		add_theme_support('custom-background', [
+			'default-preset'         => 'fit', // 'default', 'fill', 'fit', 'repeat', 'custom'
+			'default-size'           => 'cover',    // 'auto', 'contain', 'cover'
+			'default-repeat'         => 'repeat',  // 'repeat-x', 'repeat-y', 'repeat', 'no-repeat'
+			'default-attachment'     => 'scroll',  // 'scroll', 'fixed'
+			'default-color'          => '',
+			'wp-head-callback'       => '_custom_background_cb',
+			'admin-head-callback'    => '',
+			'admin-preview-callback' => '',
+		]);
+
+		add_theme_support('post-thumbnails');
+		add_theme_support('customize-selective-refresh-widgets');
+		add_theme_support('html5', [
+			'comment-list',
+			'comment-form',
+			'search-form',
+			'gallery',
+			'caption',
+			'style',
+			'script'
+		]);
+
+		add_theme_support('wp-block-styles');
+		add_theme_support('block-wide   ');
+
+		global $content_width;
+		if(! isset($content_width)){
+			$content_width = 1240;
+		}
+	}
+
+	public function register_menu(): void {
+		
 	}
 
 }
